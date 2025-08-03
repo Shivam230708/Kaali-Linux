@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Instagram Reel Downloader</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fafafa;
+      padding: 20px;
+      text-align: center;
+      color: #333;
+    }
+
+    h1 {
+      color: #e1306c;
+    }
+
+    input[type="text"] {
+      width: 90%;
+      max-width: 500px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #e1306c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 20px;
+    }
+
+    video {
+      width: 100%;
+      max-width: 480px;
+      margin-top: 10px;
+      border-radius: 10px;
+    }
+
+    img {
+      max-width: 200px;
+      margin-top: 10px;
+    }
+
+    section {
+      margin-top: 40px;
+      text-align: left;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    code {
+      background: #eee;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    footer a {
+      color: #e1306c;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📥 Instagram Reel Downloader</h1>
+  <p>Paste the Instagram Reel URL below to download.</p>
+
+  <input type="text" id="urlInput" placeholder="https://www.instagram.com/reel/xyz/" />
+  <br />
+  <button onclick="downloadReel()">Download</button>
+
+  <div class="result" id="result"></div>
+
+  <!-- 📚 How to Use the API Section -->
+  <section>
+    <h2>📚 How to Use the API</h2>
+    <p>This tool also works as an API for developers.</p>
+
+    <h3>🔗 Endpoint</h3>
+    <p>
+      <code>GET https://your-subdomain.infinityfreeapp.com/api.php?url=INSTAGRAM_REEL_URL</code>
+    </p>
+
+    <h3>✅ Example</h3>
+    <p>
+      <code>https://your-subdomain.infinityfreeapp.com/api.php?url=https://www.instagram.com/reel/Cxyz123abc/</code>
+    </p>
+
+    <h3>📤 Parameters</h3>
+    <ul>
+      <li><code>url</code> (required): Full link to an Instagram Reel</li>
+    </ul>
+
+    <h3>📦 Sample JSON Response</h3>
+    <pre>{
+  "status": "success",
+  "video": "https://cdn.instagram.com/reel.mp4",
+  "thumbnail": "https://cdn.instagram.com/thumb.jpg",
+  "thumbnail_base64": "data:image/jpg;base64,..."
+}</pre>
+
+    <h3>⚠️ Notes</h3>
+    <ul>
+      <li>Only public Reels are supported</li>
+      <li>API response includes direct video and thumbnail links</li>
+      <li>Use responsibly; avoid spamming requests</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>
+      Developer: <a href="https://t.me/Unknown_RK01" target="_blank">@Unknown_RK01</a><br />
+      Join <a href="https://t.me/BotVerseRavi" target="_blank">@BotVerseRavi</a> |
+      Support <a href="https://t.me/BotVerseRaviSupport" target="_blank">@BotVerseRaviSupport</a>
+    </p>
+  </footer>
+
+  <script>
+    async function downloadReel() {
+      const url = document.getElementById('urlInput').value.trim();
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = '⏳ Please wait...';
+
+      if (!url) {
+        resultDiv.innerHTML = '❌ Please enter a valid Instagram URL.';
+        return;
+      }
+
+      try {
+        const res = await fetch(`api.php?url=${encodeURIComponent(url)}`);
+        const data = await res.json();
+
+        if (data.status === 'success') {
+          resultDiv.innerHTML = `
+            <p>✅ Video found!</p>
+            <video controls src="${data.video}"></video><br />
+            <a href="${data.video}" download>⬇️ Download Video</a>
+            ${data.thumbnail ? `<br /><img src="${data.thumbnail}" alt="Thumbnail" />` : ''}
+          `;
+        } else {
+          resultDiv.innerHTML = `❌ ${data.message}`;
+        }
+      } catch (err) {
+        resultDiv.innerHTML = '❌ Error fetching video.';
+      }
+    }
+  </script>
+
+</body>
+  </html>
