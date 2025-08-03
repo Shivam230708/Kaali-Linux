@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Free Instagram Reel Download API by @Unknown_RK01. Fast, reliable, and easy to use." />
+  <meta name="description" content="Free Instagram Reel Download API by @BotVerseRavi. Fast, reliable, and easy to use." />
   <title>Instagram Reel Download API | BotVerseRavi</title>
   <style>
     :root {
@@ -11,6 +11,9 @@
       --accent-color: #ff2e88;
       --bg: #f9f9f9;
       --text: #222;
+      --btn-hover: #e0257f;
+      --telegram-blue: #0088cc;
+      --telegram-blue-dark: #33aaff;
     }
 
     * {
@@ -24,172 +27,241 @@
       background: var(--bg);
       color: var(--text);
       padding: 20px;
-      transition: background-color 0.3s, color 0.3s;
+      transition: background-color 0.4s ease, color 0.4s ease;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
     }
 
     .container {
       max-width: 900px;
-      margin: auto;
+      width: 100%;
       background: #fff;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-      transition: background-color 0.3s, color 0.3s;
+      padding: 30px 40px;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+      transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
     }
 
     header {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 32px;
     }
 
     h1 {
-      font-size: 2.5em;
+      font-size: 2.7em;
       color: var(--main-color);
+      user-select: text;
     }
 
     .tagline {
       color: var(--accent-color);
-      font-size: 1.1em;
+      font-size: 1.15em;
+      font-weight: 600;
+      user-select: text;
+      margin-top: 6px;
     }
 
     .section {
-      margin-bottom: 25px;
+      margin-bottom: 28px;
+      user-select: text;
     }
 
     h2 {
-      font-size: 1.5em;
-      margin-bottom: 10px;
-      border-left: 4px solid var(--accent-color);
-      padding-left: 10px;
+      font-size: 1.6em;
+      margin-bottom: 12px;
+      border-left: 5px solid var(--accent-color);
+      padding-left: 12px;
+      font-weight: 700;
+      user-select: text;
     }
 
     code {
       background: #eee;
-      padding: 2px 6px;
-      border-radius: 5px;
-      font-size: 0.95em;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 1em;
+      font-family: 'Consolas', monospace;
       user-select: text;
+      display: inline-block;
+      transition: background-color 0.3s ease;
     }
 
     pre {
       background: #f0f0f0;
-      padding: 15px;
-      border-radius: 10px;
+      padding: 18px 20px;
+      border-radius: 14px;
       overflow-x: auto;
+      font-family: 'Consolas', monospace;
+      font-size: 1em;
+      line-height: 1.5;
       user-select: text;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+      transition: background-color 0.3s ease;
     }
 
     a {
       color: var(--accent-color);
       text-decoration: none;
+      transition: color 0.3s ease;
+      user-select: text;
+    }
+    a:hover {
+      color: var(--btn-hover);
+      text-decoration: underline;
     }
 
     .footer {
-      margin-top: 40px;
+      margin-top: 48px;
       text-align: center;
       font-size: 0.95em;
       color: #666;
       user-select: text;
+      line-height: 1.6;
     }
 
     input[type="text"] {
       width: 100%;
-      padding: 12px;
-      font-size: 1em;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 1.1em;
+      margin: 14px 0 18px;
+      border: 1.8px solid #ccc;
+      border-radius: 12px;
+      transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 8px var(--accent-color);
     }
 
     button {
-      padding: 10px 20px;
+      padding: 12px 28px;
       background: var(--accent-color);
       color: #fff;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       cursor: pointer;
-      font-size: 1em;
-      margin-bottom: 20px;
-      transition: background-color 0.3s;
+      font-size: 1.1em;
+      font-weight: 700;
+      margin-bottom: 28px;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      box-shadow: 0 4px 14px rgba(255, 46, 136, 0.5);
     }
-
     button:hover {
-      background: #e0257f;
+      background: var(--btn-hover);
+      box-shadow: 0 6px 22px rgba(224, 37, 127, 0.7);
     }
 
     .result video,
     .result img {
       width: 100%;
-      max-height: 400px;
-      border-radius: 10px;
-      margin-bottom: 15px;
+      max-height: 420px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      user-select: text;
     }
 
     .download-btn {
       display: inline-block;
-      background: #333;
+      background: #222;
       color: #fff;
-      padding: 10px 15px;
-      border-radius: 6px;
+      padding: 12px 22px;
+      border-radius: 10px;
       text-decoration: none;
-      margin-top: 10px;
+      margin-top: 12px;
+      font-weight: 700;
       user-select: text;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    }
+    .download-btn:hover {
+      background: #555;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.45);
     }
 
     .error {
-      color: red;
+      color: #d93636;
+      font-weight: 700;
       user-select: text;
+      margin-top: 10px;
+      font-size: 1.1em;
     }
 
     @media (max-width: 768px) {
       h1 {
-        font-size: 2em;
+        font-size: 2.1em;
       }
       h2 {
         font-size: 1.3em;
       }
       pre {
-        font-size: 0.9em;
+        font-size: 0.95em;
+      }
+      input[type="text"] {
+        font-size: 1em;
+      }
+      button {
+        font-size: 1em;
+        padding: 10px 22px;
       }
     }
 
     @media (max-width: 480px) {
       body {
-        padding: 10px;
+        padding: 12px;
       }
       h1 {
-        font-size: 1.6em;
+        font-size: 1.7em;
       }
       .tagline {
         font-size: 1em;
       }
     }
-
-    /* ======= Telegram Dev Badge Section ======= */
+  /* ======= Telegram Dev Badge Section ======= */
     .telegram-dev {
       user-select: text;
-      border: 2px solid var(--accent-color);
-      border-radius: 14px;
-      padding: 18px 24px;
-      margin: 40px 0 30px;
+      border: 2.5px solid var(--accent-color);
+      border-radius: 18px;
+      padding: 20px 28px;
+      margin: 40px 0 32px;
       display: flex;
       align-items: center;
       background: var(--bg);
       color: var(--text);
-      font-weight: 700;
-      font-size: 1.35em;
+      font-weight: 800;
+      font-size: 1.5em;
       cursor: text;
-      box-shadow: 0 6px 15px rgb(0 0 0 / 0.08);
-      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+      box-shadow: 0 8px 25px rgb(0 0 0 / 0.12);
+      transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease,
+                  box-shadow 0.35s ease;
+      position: relative;
     }
 
     .telegram-dev svg {
-      width: 44px;
-      height: 44px;
-      margin-right: 20px;
+      width: 48px;
+      height: 48px;
+      margin-right: 24px;
       flex-shrink: 0;
-      fill: #0088cc; /* Telegram brand blue */
-      transition: fill 0.3s;
+      fill: var(--telegram-blue);
+      transition: fill 0.35s ease;
+      filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.1));
+    }
+
+    .telegram-dev:hover {
+      border-color: var(--btn-hover);
+      box-shadow: 0 12px 38px rgb(224 37 127 / 0.6);
+      background: rgba(255, 46, 136, 0.05);
+      color: var(--btn-hover);
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .telegram-dev:hover svg {
+      fill: var(--btn-hover);
+      filter: drop-shadow(0 0 6px rgba(224,37,127,0.8));
     }
 
     /* Dark mode variables */
@@ -198,6 +270,8 @@
       --text: #eee;
       --main-color: #eee;
       --accent-color: #ff2e88;
+      --btn-hover: #e0257f;
+      --telegram-blue: #33aaff;
       background: var(--bg);
       color: var(--text);
     }
@@ -205,18 +279,28 @@
     body.dark-mode .container {
       background: #1a1a1a;
       color: var(--text);
-      box-shadow: 0 0 20px rgba(255 46 136 / 0.3);
+      box-shadow: 0 8px 30px rgba(255 46 136 / 0.3);
     }
 
     body.dark-mode .telegram-dev {
       background: #222222;
       border-color: var(--accent-color);
       color: var(--text);
-      box-shadow: 0 6px 20px rgb(255 46 136 / 0.4);
+      box-shadow: 0 12px 38px rgb(255 46 136 / 0.6);
+    }
+
+    body.dark-mode .telegram-dev:hover {
+      background: rgba(255, 46, 136, 0.1);
     }
 
     body.dark-mode .telegram-dev svg {
-      fill: #33aaff;
+      fill: var(--telegram-blue);
+      filter: drop-shadow(0 0 6px rgba(51,170,255,0.8));
+    }
+
+    body.dark-mode .telegram-dev:hover svg {
+      fill: var(--btn-hover);
+      filter: drop-shadow(0 0 8px rgba(224,37,127,0.9));
     }
 
     /* System mode respects OS preference */
@@ -226,47 +310,66 @@
         --text: #eee;
         --main-color: #eee;
         --accent-color: #ff2e88;
+        --btn-hover: #e0257f;
+        --telegram-blue: #33aaff;
         background: var(--bg);
         color: var(--text);
       }
       body.system-mode .container {
         background: #1a1a1a;
         color: var(--text);
-        box-shadow: 0 0 20px rgba(255 46 136 / 0.3);
+        box-shadow: 0 8px 30px rgba(255 46 136 / 0.3);
       }
       body.system-mode .telegram-dev {
         background: #222222;
         border-color: var(--accent-color);
         color: var(--text);
-        box-shadow: 0 6px 20px rgb(255 46 136 / 0.4);
+        box-shadow: 0 12px 38px rgb(255 46 136 / 0.6);
+      }
+      body.system-mode .telegram-dev:hover {
+        background: rgba(255, 46, 136, 0.1);
       }
       body.system-mode .telegram-dev svg {
-        fill: #33aaff;
+        fill: var(--telegram-blue);
+        filter: drop-shadow(0 0 6px rgba(51,170,255,0.8));
+      }
+      body.system-mode .telegram-dev:hover svg {
+        fill: var(--btn-hover);
+        filter: drop-shadow(0 0 8px rgba(224,37,127,0.9));
       }
     }
 
     /* Mode switcher buttons */
     .mode-switcher {
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      user-select: none;
     }
 
     .mode-switcher button {
       cursor: pointer;
-      padding: 10px 16px;
-      border-radius: 10px;
+      padding: 12px 20px;
+      border-radius: 14px;
       border: none;
       background: var(--accent-color);
       color: #fff;
       font-weight: 700;
-      font-size: 1em;
-      margin: 0 10px;
-      transition: background-color 0.3s;
-      min-width: 120px;
+      font-size: 1.1em;
+      margin: 0 12px;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      min-width: 130px;
+      box-shadow: 0 5px 18px rgba(255, 46, 136, 0.6);
+      user-select: none;
     }
 
     .mode-switcher button:hover {
-      background: #e0257f;
+      background: var(--btn-hover);
+      box-shadow: 0 7px 22px rgba(224, 37, 127, 0.85);
+    }
+
+    .mode-switcher button.active {
+      background: var(--btn-hover);
+      box-shadow: 0 8px 28px rgba(224, 37, 127, 0.95);
     }
   </style>
 </head>
@@ -311,11 +414,10 @@
 }</code></pre>
     </div>
 
-    <!-- Telegram Dev Badge with mode toggles -->
     <div class="mode-switcher" aria-label="Toggle color mode">
-      <button onclick="setMode('light')">Light Mode</button>
-      <button onclick="setMode('dark')">Dark Mode</button>
-      <button onclick="setMode('system')">System Mode</button>
+      <button id="btn-light" onclick="setMode('light')">Light Mode</button>
+      <button id="btn-dark" onclick="setMode('dark')">Dark Mode</button>
+      <button id="btn-system" onclick="setMode('system')">System Mode</button>
     </div>
 
     <div class="telegram-dev" aria-label="Telegram Developer Badge">
@@ -359,6 +461,11 @@
   </div>
 
   <script>
+    const btnLight = document.getElementById("btn-light");
+    const btnDark = document.getElementById("btn-dark");
+    const btnSystem = document.getElementById("btn-system");
+    const modeButtons = [btnLight, btnDark, btnSystem];
+
     function setMode(mode) {
       document.body.classList.remove("light-mode", "dark-mode", "system-mode");
       if (mode === "light") {
@@ -368,13 +475,26 @@
       } else {
         document.body.classList.add("system-mode");
       }
+      localStorage.setItem("mode", mode);
+      updateActiveButton(mode);
     }
 
-    // Initialize mode on page load based on system preference
-    (function () {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setMode(prefersDark ? "dark" : "light");
-    })();
+    function updateActiveButton(mode) {
+      modeButtons.forEach((btn) => btn.classList.remove("active"));
+      if (mode === "light") btnLight.classList.add("active");
+      else if (mode === "dark") btnDark.classList.add("active");
+      else btnSystem.classList.add("active");
+    }
+
+    function applySavedMode() {
+      const savedMode = localStorage.getItem("mode");
+      if (savedMode) {
+        setMode(savedMode);
+      } else {
+        // Default to system mode
+        setMode("system");
+      }
+    }
 
     async function fetchReel() {
       const input = document.getElementById("reelInput").value.trim();
@@ -382,12 +502,17 @@
       resultDiv.innerHTML = "";
 
       if (!input) {
-        resultDiv.innerHTML = '<p class="error">Please enter a valid Instagram Reel URL.</p>';
+        resultDiv.innerHTML =
+          '<p class="error">Please enter a valid Instagram Reel URL.</p>';
         return;
       }
 
       try {
-        const res = await fetch(`https://instagram-api-botverseravi.gt.tc?url=${encodeURIComponent(input)}`);
+        const res = await fetch(
+          `https://instagram-api-botverseravi.gt.tc/api.php/?url=${encodeURIComponent(
+            input
+          )}`
+        );
         const data = await res.json();
 
         if (data.status === "success" && data.video) {
@@ -395,15 +520,24 @@
             <video src="${data.video}" controls autoplay muted></video>
             <br>
             <a class="download-btn" href="${data.video}" download>Download Video</a>
-            ${data.thumbnail ? `<p><img src="${data.thumbnail}" alt="Thumbnail" /></p>` : ""}
+            ${
+              data.thumbnail
+                ? `<p><img src="${data.thumbnail}" alt="Thumbnail" /></p>`
+                : ""
+            }
           `;
         } else {
-          resultDiv.innerHTML = '<p class="error">❌ Failed to fetch video. Try another link.</p>';
+          resultDiv.innerHTML =
+            '<p class="error">❌ Failed to fetch video. Try another link.</p>';
         }
       } catch (e) {
-        resultDiv.innerHTML = '<p class="error">⚠️ Error occurred. Please try again.</p>';
+        resultDiv.innerHTML =
+          '<p class="error">⚠️ Error occurred. Please try again.</p>';
       }
     }
+
+    // Initialize mode on page load
+    applySavedMode();
   </script>
 </body>
 </html>
