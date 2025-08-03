@@ -2,173 +2,179 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Instagram Reel Downloader</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Instagram Reel Download API</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #fafafa;
-      padding: 20px;
-      text-align: center;
-      color: #333;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-
-    h1 {
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f1f3f4;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(to right, #f58529, #e1306c);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 3px solid #ddd;
+    }
+    header h1 {
+      font-size: 2.5em;
+      font-weight: 600;
+    }
+    header p {
+      font-size: 1.1em;
+      margin-top: 10px;
+    }
+    main {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    h2 {
+      font-size: 2em;
+      color: #e1306c;
+      margin-bottom: 15px;
+    }
+    p, code {
+      font-size: 1em;
+    }
+    code {
+      background: #f7f7f7;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 1.1em;
       color: #e1306c;
     }
-
-    input[type="text"] {
-      width: 90%;
-      max-width: 500px;
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+    ul {
+      margin-left: 20px;
+      list-style-type: square;
     }
-
-    button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #e1306c;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .result {
-      margin-top: 20px;
-    }
-
-    video {
-      width: 100%;
-      max-width: 480px;
-      margin-top: 10px;
-      border-radius: 10px;
-    }
-
-    img {
-      max-width: 200px;
-      margin-top: 10px;
-    }
-
-    section {
-      margin-top: 40px;
-      text-align: left;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    code {
-      background: #eee;
-      padding: 2px 4px;
-      border-radius: 3px;
-      font-family: monospace;
-    }
-
-    footer {
-      margin-top: 50px;
+    .footer {
+      text-align: center;
       font-size: 14px;
+      margin-top: 30px;
       color: #666;
     }
-
-    footer a {
+    .footer a {
       color: #e1306c;
       text-decoration: none;
     }
-
-    footer a:hover {
+    .footer a:hover {
       text-decoration: underline;
+    }
+    .cta-buttons a {
+      background: #e1306c;
+      color: white;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 5px;
+      font-weight: 500;
+      margin-top: 20px;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+    .cta-buttons a:hover {
+      background: #f58529;
+    }
+    .section-content {
+      padding: 10px 0;
+    }
+    .highlight {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    .example-box {
+      background-color: #f7f7f7;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 20px 0;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Instagram Reel Download API</h1>
+    <p>Your ultimate solution to downloading Instagram Reels effortlessly</p>
+  </header>
 
-  <h1>📥 Instagram Reel Downloader</h1>
-  <p>Paste the Instagram Reel URL below to download.</p>
+  <main>
+    <section>
+      <h2>🔧 How to Use</h2>
+      <p>Simply make a GET request to the following endpoint:</p>
+      <div class="example-box">
+        <code>https://instagram-api-botverseravi.gt.tc/api.php?url=REEL_LINK</code>
+      </div>
+    </section>
 
-  <input type="text" id="urlInput" placeholder="https://www.instagram.com/reel/xyz/" />
-  <br />
-  <button onclick="downloadReel()">Download</button>
+    <section>
+      <h2>📥 Example Request</h2>
+      <div class="example-box">
+        <code>https://instagram-api-botverseravi.gt.tc/api.php?url=https://www.instagram.com/reel/xyz123</code>
+      </div>
+    </section>
 
-  <div class="result" id="result"></div>
+    <section>
+      <h2>📦 Parameters</h2>
+      <div class="section-content">
+        <ul>
+          <li><strong>url</strong> — (required) The URL of the Instagram Reel you wish to download.</li>
+        </ul>
+      </div>
+    </section>
 
-  <!-- 📚 How to Use the API Section -->
-  <section>
-    <h2>📚 How to Use the API</h2>
-    <p>This tool also works as an API for developers.</p>
-
-    <h3>🔗 Endpoint</h3>
-    <p>
-      <code>GET https://your-subdomain.infinityfreeapp.com/api.php?url=INSTAGRAM_REEL_URL</code>
-    </p>
-
-    <h3>✅ Example</h3>
-    <p>
-      <code>https://your-subdomain.infinityfreeapp.com/api.php?url=https://www.instagram.com/reel/Cxyz123abc/</code>
-    </p>
-
-    <h3>📤 Parameters</h3>
-    <ul>
-      <li><code>url</code> (required): Full link to an Instagram Reel</li>
-    </ul>
-
-    <h3>📦 Sample JSON Response</h3>
-    <pre>{
+    <section>
+      <h2>🔁 Sample JSON Response</h2>
+      <div class="highlight">
+        <pre>{
   "status": "success",
-  "video": "https://cdn.instagram.com/reel.mp4",
-  "thumbnail": "https://cdn.instagram.com/thumb.jpg",
-  "thumbnail_base64": "data:image/jpg;base64,..."
+  "reel_url": "https://instagram.com/reel/xyz123",
+  "download_url": "https://cdn.example.com/xyz123.mp4",
+  "thumbnail": "https://cdn.example.com/thumb_xyz.jpg"
 }</pre>
+      </div>
+    </section>
 
-    <h3>⚠️ Notes</h3>
-    <ul>
-      <li>Only public Reels are supported</li>
-      <li>API response includes direct video and thumbnail links</li>
-      <li>Use responsibly; avoid spamming requests</li>
-    </ul>
-  </section>
+    <section>
+      <h2>👨‍💻 Developer & Support</h2>
+      <p>For any inquiries or support, feel free to reach out:</p>
+      <p>
+        Developer: <a href="https://t.me/Unknown_RK01" target="_blank">@Unknown_RK01</a><br>
+        Join: <a href="https://t.me/BotVerseRavi" target="_blank">@BotVerseRavi</a> | 
+        Support: <a href="https://t.me/BotVerseRaviSupport" target="_blank">@BotVerseRaviSupport</a>
+      </p>
+    </section>
 
-  <footer>
-    <p>
-      Developer: <a href="https://t.me/Unknown_RK01" target="_blank">@Unknown_RK01</a><br />
-      Join <a href="https://t.me/BotVerseRavi" target="_blank">@BotVerseRavi</a> |
-      Support <a href="https://t.me/BotVerseRaviSupport" target="_blank">@BotVerseRaviSupport</a>
-    </p>
+    <section>
+      <h2>📜 Legal</h2>
+      <p>
+        <a href="https://telegra.ph/Terms-of-Use-07-14-3" target="_blank">Terms of Use</a> | 
+        <a href="https://telegra.ph/Privacy-Policy-07-14-63" target="_blank">Privacy Policy</a>
+      </p>
+    </section>
+
+    <div class="cta-buttons">
+      <a href="https://instagram-api-botverseravi.gt.tc" target="_blank">Start Using the API</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    &copy; 2025 <a href="https://t.me/Unknown_RK01" target="_blank">@Unknown_RK01</a> | Powered by BotVerse by Ravi
   </footer>
-
-  <script>
-    async function downloadReel() {
-      const url = document.getElementById('urlInput').value.trim();
-      const resultDiv = document.getElementById('result');
-      resultDiv.innerHTML = '⏳ Please wait...';
-
-      if (!url) {
-        resultDiv.innerHTML = '❌ Please enter a valid Instagram URL.';
-        return;
-      }
-
-      try {
-        const res = await fetch(`api.php?url=${encodeURIComponent(url)}`);
-        const data = await res.json();
-
-        if (data.status === 'success') {
-          resultDiv.innerHTML = `
-            <p>✅ Video found!</p>
-            <video controls src="${data.video}"></video><br />
-            <a href="${data.video}" download>⬇️ Download Video</a>
-            ${data.thumbnail ? `<br /><img src="${data.thumbnail}" alt="Thumbnail" />` : ''}
-          `;
-        } else {
-          resultDiv.innerHTML = `❌ ${data.message}`;
-        }
-      } catch (err) {
-        resultDiv.innerHTML = '❌ Error fetching video.';
-      }
-    }
-  </script>
-
 </body>
-  </html>
+</html>
